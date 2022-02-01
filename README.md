@@ -17,11 +17,11 @@
 - Copy the `GlobalLandTemperaturesByCity.csv` to the `Global_Land_Temperatures_By_City` table.
     In a different terminal run:
     ```
-    docker-compose exec -e POSTGRES_USER=postgres -e PGPASSWORD=postgres database ./var/opt/load_data.shsh
+    docker-compose exec -e POSTGRES_USER=postgres -e PGPASSWORD=postgres database ./var/opt/load_data.sh
     ```
     It would take **a long while**. Wait for the message `'GlobalLandTemperaturesByCity.csv' successfully copied to 'Global_Land_Temperatures_By_City'`.
 
-The api is accessible at http://127.0.0.1:8080/docs
+The api is accessible at http://127.0.0.1:8080/v1/temperatures
 
 The database can be connected to, by running:
 ```
