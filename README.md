@@ -13,9 +13,13 @@
     ```
     docker-compose up
     ```
-    It would take a while for the database service to be fully operational, because the
-    csv file is fetched and loaded into the databse during it's startup.
-    If startup fails(network downtime) or is terminated, run `rm -rf postgres-data && docker-compose rm -f` and then `docker-compose up` again.
+    Wait for the log message `database system is ready to accept connections` on the terminal.
+- Copy the `GlobalLandTemperaturesByCity.csv` to the `Global_Land_Temperatures_By_City` table.
+    OIn a different terminal run:
+    ```
+    PGPASSWORD=postgres POSTGRES_USER=postgres POSTGRES_DB=postgres PORT=8500 ./load_data.sh
+    ```
+    It would take **a long while**. Wait for the message `'GlobalLandTemperaturesByCity.csv' successfully copied to 'Global_Land_Temperatures_By_City'`.
 
 The api is accessible at http://127.0.0.1:8080/docs
 
@@ -34,7 +38,7 @@ The backend service was built using fast api, a fast and powerful python web fra
 
 **Database**
 
-Postgresql is used as the database. There are 3 scripts that run during the database setup that creates the database, creates the table, downloads the  GlobalLandTemperaturesByCity.csv file and loads the csv into the table. These scripts make the data ingestion process automated, but it also makes it prone to errors especially if during the startup there is a network downtime.
+Postgresql is used as the database. There are 2 scripts that run during the database setup that creates the database, the table and downloads the `GlobalLandTemperaturesByCity.csv` file.
 
 **Top N cities that have the highest monthly AverageTemperature**
 

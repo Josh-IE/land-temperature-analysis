@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo "Creating database:'planetly' and table:'Global_Land_Temperatures_By_City'"
+
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE DATABASE planetly;
     \c planetly;
