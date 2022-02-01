@@ -1,0 +1,7 @@
+*.pyc
+.env
+.csv
+__pycache__
+.pytest_cache
+.venv
+postgres-data
