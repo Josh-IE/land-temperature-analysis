@@ -15,9 +15,9 @@
     ```
     Wait for the log message `database system is ready to accept connections` on the terminal.
 - Copy the `GlobalLandTemperaturesByCity.csv` to the `Global_Land_Temperatures_By_City` table.
-    OIn a different terminal run:
+    In a different terminal run:
     ```
-    PGPASSWORD=postgres POSTGRES_USER=postgres POSTGRES_DB=postgres PORT=8500 ./load_data.sh
+    docker-compose exec -e POSTGRES_USER=postgres -e PGPASSWORD=postgres database ./var/opt/load_data.shsh
     ```
     It would take **a long while**. Wait for the message `'GlobalLandTemperaturesByCity.csv' successfully copied to 'Global_Land_Temperatures_By_City'`.
 
@@ -38,7 +38,7 @@ The backend service was built using fast api, a fast and powerful python web fra
 
 **Database**
 
-Postgresql is used as the database. There are 2 scripts that run during the database setup that creates the database, the table and downloads the `GlobalLandTemperaturesByCity.csv` file.
+Postgresql is used as the database.
 
 **Top N cities that have the highest monthly AverageTemperature**
 
